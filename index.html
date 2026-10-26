@@ -182,7 +182,7 @@ const docSections = [
     "Date is correct? Yearlong / Termlong / September 1, 2026 / September 1–5, 2026",
     "Time is consistent with PPR?",
     "Venue is “Please See PPR”?",
-    "ENP is greater than or equal to ENMP?",
+    "ENP is greater than or equal to ENMP / (N/A for Asynchronous activities)?",
     "Online Activity"
   ]},
   { title: "PPR Section 1: Activity Details", items: [
@@ -190,7 +190,7 @@ const docSections = [
     "Nature of Activity is exactly the same in A-Form and GOSM",
     "Type of Activity is exactly the same in A-Form and GOSM",
     "Date is exactly the same in A-Form",
-    "ENP is greater than or equal to ENMP?",
+    "ENP is greater than or equal to ENMP / (N/A for Asynchronous activities)? ",
     "Time is exactly the same in A-Form",
     "Venue is accurate with Logistics reservation/Pre-Registration and GALS link is accessible/Zoom link is accessible?",
     "Project heads are not greater than 5?",
@@ -282,11 +282,46 @@ const contestSections = [
   ]}
 ];
 
+const credSections = [
+  { title: "Credentials of Performer/s or Speaker/s", items: [
+    "If Non-DLSU student, does the picture show the person’s face clearly?",
+    "Is their Full Name indicated?",
+    "Is their educational attainment indicated?",
+    "Is their current position indicated?",
+    "Does their relation to the event have sufficient explanation?",
+    "SPCA requirement (for Non-DLSU students and speakers)?"
+
+  ] }
+];
+
+const screenSections = [
+  { title: "Screenshot of Forms", items: [
+    "Links are accessible and working?",
+    "Data Privacy agreement is updated (AY 2026-2027)?",
+    "Pictures are clear and readable?"
+  ]}
+];
+
+const loiSections = [
+  { title: "Letter of Invitation", items: [
+    "Letter is addressed to the correct person?",
+    "Letter is signed?",
+    "For each speaker, 1 letter?",
+  ]}
+];
+
 const checklists = [
   { key: "docs", label: "A-Form and PPR", sub: "Major Requirement",
     heading: "A-Form and PPR Checklist", sections: docSections },
   { key: "contest", label: "General Contest Mechanics", sub: "Additional Requirement",
-    heading: "General Contest Mechanics Checklist", sections: contestSections }
+    heading: "General Contest Mechanics Checklist", sections: contestSections },
+  { key: "creds", label: "Credentials of Speaker/Performer", sub:"Additional Requirement",
+    heading: "Credentials of Speaker/Performer Checklist", sections: credSections},
+  { key: "ss", label: "Screenshot of Forms", sub:"Additional Requirement",
+    heading: "Screenshot of Forms Checklist", sections: screenSections},
+  { key: "loi", label: "Letter of Invitation", sub:"Additional Requirement",
+    heading: "Letter of Invitation Checklist", sections: loiSections}
+
 ];
 
 const tabsEl = document.getElementById("tabs");
@@ -327,7 +362,7 @@ function panelHTML(cfg) {
     </div>
     <div class="done-banner" role="status">
       <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="24" r="20"/><path d="M14 25l7 7 13-15"/></svg>
-      <h3>Pre-Acts are fully checked. Forward to your AVP/VP for final checking.</h3>
+      <h3>Pre-Acts are fully checked. Forward to your AVP/VP for second checking.</h3>
     </div>
     <form autocomplete="off">${cfg.sections.map(s => sectionHTML(cfg.key, s)).join("")}</form>
     <button class="reset" type="button">Reset checklist</button>
